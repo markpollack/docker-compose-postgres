@@ -6,7 +6,7 @@ This code sample demonstrates accessing a PostgresSQL database with Spring Boot.
 
 The application configuration assumes you have created a PostgresSQL database named `demo1`.  The `application.yaml` file contains the following datasource configuration
 
-```yaml
+```
 spring:
   datasource:
     url: "jdbc:postgresql://127.0.0.1:15432/demo1"
@@ -24,7 +24,8 @@ tss generator install --go-getter-url=github.com/markpollack/generator-docker-co
 The generator creates a `docker` subdirectory.  In that subdirectory execute the command
 
 ```bash
-docker-compose -f docker-compose-postgress.yaml up
+cd docker
+docker-compose -f docker-compose-postgres.yaml up
 ```
 
 ## Creating the `demo1` database
@@ -43,7 +44,7 @@ postgres=#
 ```
 
 From here you can create the `demo` database by entering something such as
-```sql
+```
 CREATE DATABASE demo1
     WITH
     OWNER = postgres
@@ -72,7 +73,11 @@ The `MessageController` provides three endpoints
 
 The application requires Java 11 by default.  If you want to change this, for example to Java 8, edit the `java.version` property in the pom to `1.8`.
 
-Execute `./mvnw spring-boot:run` to compile and run the application.
+To compile and run the application, execute
+
+```
+./mvnw spring-boot:run
+```
 
 A few curl commands exercise the UI.
 
