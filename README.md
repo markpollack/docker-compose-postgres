@@ -4,7 +4,7 @@ This code sample demonstrates accessing a PostgresSQL database with Spring Boot.
 
 # Pre-requisites
 
-The application configuration assumes you have created a PostgresSQL database named `demo1`.  The `application.yaml` file contains the following datasource configuration
+The application configuration assumes you have created a PostgresSQL database named `demo`.  The `application.yaml` file contains the following datasource configuration
 
 ```
 spring:
@@ -16,6 +16,16 @@ spring:
 
 A quick way to setup a PostgresSQL database supports this configuration is by installing and running the Tanzu Starter Service generator `tss` that will setup Docker containers for the database and also the pgAdmin GUI.
 
+
+# Compiling and running the application
+
+The application requires Java 11 by default.  If you want to change this, for example to Java 8, edit the `java.version` property in the pom to `1.8`.
+
+To compile and run the application, execute
+
+```
+./mvnw spring-boot:run
+```
 
 # Data and Domain Model
 
@@ -30,17 +40,7 @@ The `MessageController` provides three endpoints
 * `/quotes` - Returns all quotes
 * `/quotes/{id}` - Returns the quote for the given `id`
 
-# Compiling and running the application
-
-The application requires Java 11 by default.  If you want to change this, for example to Java 8, edit the `java.version` property in the pom to `1.8`.
-
-To compile and run the application, execute
-
-```
-./mvnw spring-boot:run
-```
-
-A few curl commands exercise the UI.
+A few curl commands exercise the API.
 
 ```json
 $ curl -s localhost:8080 | jq
