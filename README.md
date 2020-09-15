@@ -9,51 +9,12 @@ The application configuration assumes you have created a PostgresSQL database na
 ```
 spring:
   datasource:
-    url: "jdbc:postgresql://127.0.0.1:15432/demo1"
+    url: "jdbc:postgresql://127.0.0.1:15432/demo"
     username: postgres
     password: password
 ```
 
 A quick way to setup a PostgresSQL database supports this configuration is by installing and running the Tanzu Starter Service generator `tss` that will setup Docker containers for the database and also the pgAdmin GUI.
-
-
-```bash
-tss generator install --go-getter-url=github.com/markpollack/generator-docker-compose-spring
-```
-
-The generator creates a `docker` subdirectory.  In that subdirectory execute the command
-
-```bash
-cd docker
-docker-compose -f docker-compose-postgres.yaml up
-```
-
-## Creating the `demo1` database
-
-To create the `demo1` database:
-```bash
-docker exec -it demo_postgres bash
-```
-You will see the following output:
-```bash
-root@bda99318078b:/# psql -U postgres
-psql (12.4 (Debian 12.4-1.pgdg100+1))
-Type "help" for help.
-
-postgres=#
-```
-
-From here you can create the `demo` database by entering something such as
-```
-CREATE DATABASE demo1
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'en_US.utf8'
-    LC_CTYPE = 'en_US.utf8'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
-```
 
 
 # Data and Domain Model
